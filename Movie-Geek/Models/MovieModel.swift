@@ -59,21 +59,6 @@ struct Movie: Decodable, Identifiable, Hashable {
         genres?.first?.name ?? "n/a"
     }
     
-    var ratingText: String {
-        let rating = Int(voteAverage)
-        let ratingText = (0..<rating).reduce("") { (acc, _) -> String in
-            return acc + "★"
-        }
-        return ratingText
-    }
-    
-    var scoreText: String {
-        guard ratingText.count > 0 else {
-            return "n/a"
-        }
-        return "\(ratingText.count)/10"
-    }
-    
     var yearText: String {
         guard let releaseDate = self.releaseDate, let date = Utils.dateFormatter.date(from: releaseDate) else {
             return "n/a"

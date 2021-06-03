@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import URLImage
+import Kingfisher
 
 struct MovieDetailView: View {
     
@@ -20,13 +20,11 @@ struct MovieDetailView: View {
     var body: some View {
         GeometryReader { geometry in
                     NavigationView() {
-                        URLImage(self.movie.posterURL) {
-                            image in image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                .edgesIgnoringSafeArea(.all)
-                        }
+                        KFImage(source: .network(movie.posterURL))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                            .edgesIgnoringSafeArea(.all)
                             }
                     .navigationBarItems(leading: Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
@@ -48,29 +46,9 @@ struct MovieDetailView: View {
                         .padding()
                         
                             HStack {
-                                if !movie.ratingText.isEmpty {
-                                    Text(movie.ratingText).foregroundColor(.red)
-                                }
-                                Text(movie.scoreText)
+                                MovieRatingView(value: movie.voteAverage)
                             }
                             .padding()
-                            
-                            HStack  {
-                                if movie.cast != nil && movie.cast!.count > 0 {
-                                    VStack {
-                                        Text("Starring").font(.headline)
-                                        ForEach(self.movie.cast!.prefix(9)) { cast in
-                                            Text(cast.name)
-                                        }
-                                    }
-                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                    Spacer()
-                                    
-                                }
-                            }
-                        .padding()
-                        
-                        
                     }
                 }.edgesIgnoringSafeArea(.all)
             }

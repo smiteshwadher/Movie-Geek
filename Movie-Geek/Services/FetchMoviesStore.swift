@@ -31,7 +31,7 @@ class MovieStore: MovieService {
             return
         }
         self.loadURLAndDecode(url: url, params: [
-            "append_to_response": "videos,credits"
+            "append_to_response": "similar"
         ], completion: completion)
     }
     
