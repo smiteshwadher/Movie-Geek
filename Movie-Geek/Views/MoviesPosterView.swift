@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+// A single poster view with movie poster image so that it just displays the image with the name.
 struct MoviesPosterView: View {
     
     let movie: Movie
+    
+    // Observable object for imageLoader created so as to append the poster url to loadimage in the view
     @ObservedObject var imageLoader = ImageLoader()
     
     var body: some View {

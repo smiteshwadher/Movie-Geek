@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Search bar input field and co-ordinator implementation to check for any changes in the text.
 struct SearchBarView: UIViewRepresentable {
 
     let placeholder: String

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Loader to show before any response is fetched from the api call
 struct MovieLoadingView: View {
     
     let isLoading: Bool

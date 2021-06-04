@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Movie Model to store the data.
 struct MoviesResponse: Decodable {
     let results: [Movie]
 }

@@ -18,6 +18,7 @@ class ShowMovieDetailViewModel: ObservableObject {
         self.movieService = movieService
     }
     
+    // To load the details of the movie which was clicked in the movie listing page so as to fetch proper details
     func loadMovie(id: Int) {
         self.movie = nil
         self.isLoading = false

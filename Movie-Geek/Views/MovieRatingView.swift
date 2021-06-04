@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+
+// Movie rating view to show vote average in a good UI.
 struct MovieRatingView: View {
      var height: CGFloat = 10
     var value: Double = 0.0

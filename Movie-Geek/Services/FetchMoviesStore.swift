@@ -12,11 +12,13 @@ class MovieStore: MovieService {
     static let shared = MovieStore()
     private init() {}
     
+    // Private API KEY I have removed this as it is confidential.
     private let apiKey = "e434184dec58f3e1efa3e18ae6caf17a"
     private let baseAPIURL = "https://api.themoviedb.org/3"
     private let urlSession = URLSession.shared
     private let jsonDecoder = Utils.jsonDecoder
     
+    // to load the movies based on the type i.e now playing / popular
     func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MoviesResponse, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/movie/\(endpoint.rawValue)") else {
             completion(.failure(.invalidEndpoint))
@@ -25,6 +27,7 @@ class MovieStore: MovieService {
         self.loadURLAndDecode(url: url, completion: completion)
     }
     
+    // to load the details of the movie which has been clicked
     func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/movie/\(id)") else {
             completion(.failure(.invalidEndpoint))
@@ -35,6 +38,7 @@ class MovieStore: MovieService {
         ], completion: completion)
     }
     
+    // Search movies api based on the text changes in the searchbar
     func searchMovie(query: String, completion: @escaping (Result<MoviesResponse, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
             completion(.failure(.invalidEndpoint))

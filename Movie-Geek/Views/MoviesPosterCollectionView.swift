@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// A Horizontal scrollable collection view to show the list of Now playing movies and popular movies in the home page of Movie Geek
 struct MoviePosterCollectionView: View {
     
     let title: String
@@ -22,7 +23,10 @@ struct MoviePosterCollectionView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 16) {
                     ForEach(self.movies) { movie in
-                        NavigationLink(destination: MovieDetailView(movieId: movie.id, movie: movie)) {
+                        NavigationLink(destination:
+                                        // When any section is clicked on the collection view it navigates the user to the detail page to show the overview of the movie along with the rating view
+                                        MovieDetailView(movieId: movie.id, movie: movie)) {
+                            // Meanwhile the Poster view which shows the movie poster image at each cell
                             MoviesPosterView(movie: movie)
                         }.buttonStyle(PlainButtonStyle())
                             .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)

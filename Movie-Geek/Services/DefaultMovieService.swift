@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+// A singular service to return the objects if api called ends or not.
 protocol MovieService {
     func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MoviesResponse, MovieError>) -> ())
     func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ())

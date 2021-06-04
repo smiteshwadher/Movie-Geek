@@ -17,9 +17,11 @@ struct MovieListView: View {
             List {
                 Group {
                     if nowPlayingState.movies != nil {
+                        // Loading the horizontal collection view
                         MoviePosterCollectionView(title: "Now Playing", movies: nowPlayingState.movies!)
                         
                     } else {
+                        // Show loader until api call is done
                         MovieLoadingView(isLoading: self.nowPlayingState.isLoading, error: self.nowPlayingState.error) {
                             self.nowPlayingState.loadMovies(with: .nowPlaying)
                         }

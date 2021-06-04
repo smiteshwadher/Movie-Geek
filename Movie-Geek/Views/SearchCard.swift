@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+
+// Search Card View to show in search view
 struct SearchCard: ViewModifier {
     func body(content: Content) -> some View {
         content

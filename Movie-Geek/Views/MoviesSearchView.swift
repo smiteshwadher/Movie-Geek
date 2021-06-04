@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 
+// Search View to show the list the data loaded from the search api.
 struct MovieSearchView: View {
     
     @ObservedObject var movieSearchState = SearchMovieViewModel()
@@ -45,6 +46,8 @@ struct MovieSearchView: View {
                             }
                             .frame(maxWidth: .infinity, alignment: .center)
                             .background(Color(red: 32/255, green: 36/255, blue: 38/255))
+                            
+                            // Card created to show in search view
                             .modifier(SearchCard())
                             .padding(.all, 10)
                         }
@@ -53,6 +56,7 @@ struct MovieSearchView: View {
                 
             }
             .onAppear {
+                // Observable to see the changes in the search bar.
                 self.movieSearchState.startObserve()
             }
             .navigationBarTitle("Search")

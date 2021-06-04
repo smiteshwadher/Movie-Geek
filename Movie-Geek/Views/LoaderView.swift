@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// A simple class to show the Loader in the whole view until the response is fetched.
 struct LoaderView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {}
